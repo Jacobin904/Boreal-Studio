@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boreal Studio - Excellence & Innovation</title>
+    <link rel="icon" href="logo.png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0a0a0a;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        /* Aurora Background Effect */
+        .aurora-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #0a0a0a 0%, #0d1b2a 50%, #0a0a0a 100%);
+            z-index: -2;
+        }
+
+        .aurora {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(ellipse at 20% 30%, rgba(0, 255, 170, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 70%, rgba(0, 200, 255, 0.1) 0%, transparent 50%);
+            z-index: -1;
+            animation: aurora 15s ease-in-out infinite;
+        }
+
+        @keyframes aurora {
+            0%, 100% { opacity: 0.5; transform: translateY(0); }
+            50% { opacity: 1; transform: translateY(-20px); }
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0, 255, 170, 0.2);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: 2px solid #00ffaa;
+        }
+
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #00ffaa 0%, #00c8ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #00ffaa;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #00ffaa, #00c8ff);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 100px;
+            padding: 100px 5%;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 80vh;
+        }
+
+        .hero-logo {
+            width: 250px;
+            height: 250px;
+            margin-bottom: 30px;
+            border-radius: 50%;
+            border: 4px solid rgba(0, 255, 170, 0.5);
+            box-shadow: 0 0 60px rgba(0, 255, 170, 0.3);
+            animation: glow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { box-shadow: 0 0 60px rgba(0, 255, 170, 0.3); }
+            to { box-shadow: 0 0 100px rgba(0, 200, 255, 0.5); }
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #ffffff 0%, #00ffaa 50%, #00c8ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            color: #a0a0a0;
+            max-width: 600px;
+            margin-bottom: 40px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .btn {
+            padding: 15px 40px;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #00ffaa 0%, #00c8ff 100%);
+            color: #0a0a0a;
+            font-weight: bold;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 255, 170, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #00ffaa;
+            border: 2px solid #00ffaa;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(0, 255, 170, 0.1);
+            transform: translateY(-3px);
+        }
+
+        /* Team Section */
+        .team {
+            padding: 100px 5%;
+            background: rgba(13, 27, 42, 0.5);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 60px;
+            background: linear-gradient(135deg, #00ffaa 0%, #00c8ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .team-card {
+            background: rgba(10, 10, 10, 0.6);
+            border: 1px solid rgba(0, 255, 170, 0.2);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            transition: all 0.3s;
+            backdrop-filter: blur(10px);
+        }
+
+        .team-card:hover {
+            transform: translateY(-10px);
+            border-color: #00ffaa;
+            box-shadow: 0 20px 60px rgba(0, 255, 170, 0.2);
+        }
+
+        .team-card img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 3px solid #00ffaa;
+            margin-bottom: 20px;
+            object-fit: cover;
+        }
+
+        .team-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: #ffffff;
+        }
+
+        .team-card .role {
+            color: #00ffaa;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .team-card .username {
+            color: #808080;
+            font-size: 0.95rem;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 100px 5%;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background: rgba(10, 10, 10, 0.6);
+            border: 1px solid rgba(0, 200, 255, 0.2);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .feature-card:hover {
+            border-color: #00c8ff;
+            transform: translateY(-5px);
+        }
+
+        .feature-card h3 {
+            color: #00c8ff;
+            margin: 15px 0;
+            font-size: 1.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(10, 10, 10, 0.9);
+            padding: 40px 5%;
+            text-align: center;
+            border-top: 1px solid rgba(0, 255, 170, 0.2);
+        }
+
+        footer p {
+            color: #808080;
+        }
+
+        .social-links {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .social-links a {
+            color: #00ffaa;
+            font-size: 1.5rem;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            color: #00c8ff;
+            transform: scale(1.2);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="aurora-bg"></div>
+    <div class="aurora"></div>
+
+    <nav>
+        <div class="logo">
+            <img src="https://cdn.discordapp.com/attachments/1454168707147370658/1528822407454916849/wpdx9z4.webp" alt="Boreal Studio">
+            <span class="logo-text">BOREAL STUDIO</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#accueil">Accueil</a></li>
+            <li><a href="#equipe">Équipe</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero" id="accueil">
+        <img src="https://cdn.discordapp.com/attachments/1454168707147370658/1528822407454916849/wpdx9z4.webp" alt="Boreal Studio Logo" class="hero-logo">
+        <h1>BOREAL STUDIO</h1>
+        <p>L'excellence et l'innovation au service de vos projets. Nous créons des expériences uniques dans l'univers digital.</p>
+        <div class="cta-buttons">
+            <a href="https://discord.gg/your-invite" class="btn btn-primary">Rejoindre Discord</a>
+            <a href="#services" class="btn btn-secondary">Nos Services</a>
+        </div>
+    </section>
+
+    <section class="team" id="equipe">
+        <h2 class="section-title">Notre Équipe</h2>
+        <div class="team-grid">
+            <div class="team-card">
+                <img src="https://cdn.discordapp.com/avatars/1321908994591297601/7e86b0167a9cdcf91e567fb8e7d7fae6.webp?size=1024" alt="Owner">
+                <h3>𝙔𝙏𝘽 𝙋𝙧𝙞𝙢𝙚𝙨𝙩𝙖𝙧𝙤𝙭</h3>
+                <div class="role">Fondateur & Owner</div>
+                <div class="username">@ytb_starox_14069</div>
+            </div>
+            <div class="team-card">
+                <img src="https://cdn.discordapp.com/avatars/1281784488854159421/608fbe0e316e417b5e83539ef8555255.webp?size=1024" alt="Developer">
+                <h3>Jacobin Babouain</h3>
+                <div class="role">Développeur Principal</div>
+                <div class="username">@jacobin904</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features" id="services">
+        <h2 class="section-title">Nos Services</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <h3>🤖 Bots Discord</h3>
+                <p>Développement de bots Discord personnalisés et performants pour votre communauté.</p>
+            </div>
+            <div class="feature-card">
+                <h3>🌐 Sites Web</h3>
+                <p>Création de sites web modernes, responsives et optimisés pour votre présence en ligne.</p>
+            </div>
+            <div class="feature-card">
+                <h3>🎨 Design</h3>
+                <p>Identité visuelle, logos et graphismes professionnels pour votre marque.</p>
+            </div>
+            <div class="feature-card">
+                <h3>💡 Conseil</h3>
+                <p>Accompagnement et expertise pour vos projets digitaux.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <p>&copy; 2026 Boreal Studio. Tous droits réservés.</p>
+        <div class="social-links">
+            <a href="#">Discord</a>
+            <a href="#">Twitter</a>
+            <a href="#">GitHub</a>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Animation on scroll
+        window.addEventListener('scroll', () => {
+            const cards = document.querySelectorAll('.team-card, .feature-card');
+            cards.forEach(card => {
+                const cardTop = card.getBoundingClientRect().top;
+                if (cardTop < window.innerHeight - 100) {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
